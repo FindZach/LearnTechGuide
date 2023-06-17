@@ -17,7 +17,7 @@ export class TutorialDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const tutorialId = Number(this.route.snapshot.paramMap.get('id'));
-    this.tutorial = this.tutorialService.getTutorialById(tutorialId);
+    const slug = this.route.snapshot.paramMap.get('slug');
+    this.tutorial = slug ? this.tutorialService.getTutorialBySlug(slug) : undefined;
   }
 }

@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Default route redirects to the home page
   { path: 'home', component: HomeComponent },
   { path: 'tutorial', component: TutorialComponent },
-  { path: 'tutorials/:id', component: TutorialDetailComponent },
+  { path: 'tutorials/:slug', component: TutorialDetailComponent },
  // { path: 'about', component: AboutComponent },
  // { path: 'tutorials', component: TutorialsComponent },
  // { path: 'contact', component: ContactComponent },

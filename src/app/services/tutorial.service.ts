@@ -6,9 +6,9 @@ import { Tutorial } from '../models/tutorial/tutorial.model';
 })
 export class TutorialService {
   private tutorials: Tutorial[] = [
-    { id: 1, title: 'Introduction to HTML', description: 'Learn the basics of HTML markup.', author: 'John Doe' },
-    { id: 2, title: 'CSS Basics', description: 'Explore the fundamentals of CSS styling.', author: 'Jane Smith' },
-    { id: 3, title: 'JavaScript Fundamentals', description: 'Master the core concepts of JavaScript.', author: 'Alex Johnson' }
+    { id: 1, title: 'Introduction to HTML', description: 'Learn the basics of HTML markup.', author: 'John Doe', slug: 'introduction-to-html' },
+    { id: 2, title: 'CSS Basics', description: 'Explore the fundamentals of CSS styling.', author: 'Jane Smith', slug: 'css-basics' },
+    { id: 3, title: 'JavaScript Fundamentals', description: 'Master the core concepts of JavaScript.', author: 'Alex Johnson', slug: 'javascript-fundamentals' }
   ];
 
   constructor() {}
@@ -17,7 +17,48 @@ export class TutorialService {
     return this.tutorials;
   }
 
-  getTutorialById(id: number): Tutorial | undefined {
-    return this.tutorials.find(tutorial => tutorial.id === id);
+  getTutorialBySlug(slug: string): Tutorial | undefined {
+    return this.tutorials.find(tutorial => tutorial.slug === slug);
+  }
+
+  addTutorial(tutorial: Tutorial) {
+    // Generate a new ID for the tutorial
+    const newId = this.generateNewId();
+
+    // Generate a slug based on the tutorial title
+    const slug = this.generateSlug(tutorial.title);
+
+    // Assign the new ID and slug to the tutorial
+    tutorial.id = newId;
+    tutorial.slug = slug;
+
+    // Add the tutorial to the tutorials array
+    this.tutorials.push(tutorial);
+  }
+
+  updateTutorial(tutorial: Tutorial) {
+    const existingTutorial = this.tutorials.find(t => t.id === tutorial.id);
+    if (existingTutorial) {
+      existingTutorial.title = tutorial.title;
+      existingTutorial.description = tutorial.description;
+      existingTutorial.author = tutorial.author;
+    }
+  }
+
+  deleteTutorial(tutorial: Tutorial) {
+    const index = this.tutorials.findIndex(t => t.id === tutorial.id);
+    if (index !== -1) {
+      this.tutorials.splice(index, 1);
+    }
+  }
+
+  private generateNewId(): number {
+    const maxId = Math.max(...this.tutorials.map(tutorial => tutorial.id));
+    return maxId + 1;
+  }
+
+  private generateSlug(title: string): string {
+    const cleanedTitle = title.replace(/[^\w\s-]/g, '').toLowerCase();
+    return cleanedTitle.replace(/\s+/g, '-');
   }
 }

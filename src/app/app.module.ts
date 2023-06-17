@@ -11,6 +11,8 @@ import { PageNotFoundComponent } from './shared/components/page-not-found/page-n
 import { TutorialDetailComponent } from './components/tutorial/tutorial-detail/tutorial-detail.component';
 import { TutorialListComponent } from './components/tutorial/tutorial-list/tutorial-list.component';
 import { TutorialComponent } from './pages/tutorial/tutorial.component';
+import { TutorialEditorComponent } from './components/tutorial/tutorial-editor/tutorial-editor.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,11 +24,13 @@ import { TutorialComponent } from './pages/tutorial/tutorial.component';
     PageNotFoundComponent,
     TutorialDetailComponent,
     TutorialListComponent,
-    TutorialComponent
+    TutorialComponent,
+    TutorialEditorComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
