@@ -13,6 +13,7 @@ import { TutorialListComponent } from './components/tutorial/tutorial-list/tutor
 import { TutorialComponent } from './pages/tutorial/tutorial.component';
 import { TutorialEditorComponent } from './components/tutorial/tutorial-editor/tutorial-editor.component';
 import { FormsModule } from '@angular/forms';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    QuillModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

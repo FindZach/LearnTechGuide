@@ -12,7 +12,7 @@ export class TutorialService {
       description: 'Learn the basics of HTML markup.',
       author: 'John Doe',
       slug: 'introduction-to-html',
-      content: 'This is the content of the Introduction to HTML tutorial.'
+      content: '<h1>This is the</h1> content of the Introduction to HTML tutorial.'
     },
     {
       id: 2,
