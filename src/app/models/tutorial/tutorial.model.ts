@@ -4,4 +4,5 @@ export interface Tutorial {
   description: string;
   author: string;
   slug: string;
+  content: string;
 }

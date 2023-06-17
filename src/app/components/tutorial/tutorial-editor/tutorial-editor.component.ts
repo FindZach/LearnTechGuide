@@ -14,7 +14,8 @@ export class TutorialEditorComponent {
     title: '',
     description: '',
     author: '',
-    slug: ''
+    slug: '',
+    content: ''
   };
   selectedTutorial: Tutorial | undefined;
 
@@ -29,7 +30,8 @@ export class TutorialEditorComponent {
       title: '',
       description: '',
       author: '',
-      slug: ''
+      slug: '',
+      content: ''
     };
   }
 

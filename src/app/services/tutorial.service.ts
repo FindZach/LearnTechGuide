@@ -6,10 +6,32 @@ import { Tutorial } from '../models/tutorial/tutorial.model';
 })
 export class TutorialService {
   private tutorials: Tutorial[] = [
-    { id: 1, title: 'Introduction to HTML', description: 'Learn the basics of HTML markup.', author: 'John Doe', slug: 'introduction-to-html' },
-    { id: 2, title: 'CSS Basics', description: 'Explore the fundamentals of CSS styling.', author: 'Jane Smith', slug: 'css-basics' },
-    { id: 3, title: 'JavaScript Fundamentals', description: 'Master the core concepts of JavaScript.', author: 'Alex Johnson', slug: 'javascript-fundamentals' }
+    {
+      id: 1,
+      title: 'Introduction to HTML',
+      description: 'Learn the basics of HTML markup.',
+      author: 'John Doe',
+      slug: 'introduction-to-html',
+      content: 'This is the content of the Introduction to HTML tutorial.'
+    },
+    {
+      id: 2,
+      title: 'CSS Basics',
+      description: 'Explore the fundamentals of CSS styling.',
+      author: 'Jane Smith',
+      slug: 'css-basics',
+      content: 'This is the content of the CSS Basics tutorial.'
+    },
+    {
+      id: 3,
+      title: 'JavaScript Fundamentals',
+      description: 'Master the core concepts of JavaScript.',
+      author: 'Alex Johnson',
+      slug: 'javascript-fundamentals',
+      content: 'This is the content of the JavaScript Fundamentals tutorial.'
+    }
   ];
+
 
   constructor() {}
 
@@ -19,6 +41,10 @@ export class TutorialService {
 
   getTutorialBySlug(slug: string): Tutorial | undefined {
     return this.tutorials.find(tutorial => tutorial.slug === slug);
+  }
+
+  getTutorialById(id: number): Tutorial | undefined {
+    return this.tutorials.find(tutorial => tutorial.id === id);
   }
 
   addTutorial(tutorial: Tutorial) {
@@ -37,11 +63,12 @@ export class TutorialService {
   }
 
   updateTutorial(tutorial: Tutorial) {
-    const existingTutorial = this.tutorials.find(t => t.id === tutorial.id);
+    const existingTutorial = this.getTutorialById(tutorial.id);
     if (existingTutorial) {
       existingTutorial.title = tutorial.title;
       existingTutorial.description = tutorial.description;
       existingTutorial.author = tutorial.author;
+      existingTutorial.content = tutorial.content;
     }
   }
 
