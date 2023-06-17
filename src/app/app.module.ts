@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { ModalComponent } from './shared/componenets/modal/modal.component';
+import { ModalComponent } from './shared/components/modal/modal.component';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ModalComponent } from './shared/componenets/modal/modal.component';
     HomeComponent,
     NavbarComponent,
     SidebarComponent,
-    ModalComponent
+    ModalComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
