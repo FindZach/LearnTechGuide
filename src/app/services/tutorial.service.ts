@@ -33,7 +33,21 @@ export class TutorialService {
   ];
 
 
-  constructor() {}
+  constructor() {
+
+    for (let i = 4; i <= 50; i++) {
+      const tutorial: Tutorial = {
+        id: i,
+        title: `Tutorial ${i}`,
+        description: `Description of Tutorial ${i}`,
+        author: `Author ${i}`,
+        slug: `tutorial-${i}`,
+        content: `Content of Tutorial ${i}`
+      };
+      this.tutorials.push(tutorial);
+    }
+
+  }
 
   getTutorials(): Tutorial[] {
     return this.tutorials;

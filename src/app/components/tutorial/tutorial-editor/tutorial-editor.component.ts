@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Tutorial } from 'src/app/models/tutorial/tutorial.model';
 import { TutorialService } from 'src/app/services/tutorial.service';
 
@@ -7,7 +7,7 @@ import { TutorialService } from 'src/app/services/tutorial.service';
   templateUrl: './tutorial-editor.component.html',
   styleUrls: ['./tutorial-editor.component.scss']
 })
-export class TutorialEditorComponent {
+export class TutorialEditorComponent implements OnInit {
   tutorials: Tutorial[] = [];
   newTutorial: Tutorial = {
     id: 0,
@@ -18,6 +18,10 @@ export class TutorialEditorComponent {
     content: ''
   };
   selectedTutorial: Tutorial | undefined;
+
+  ngOnInit() {
+
+  }
 
   constructor(private tutorialService: TutorialService) {
     this.tutorials = this.tutorialService.getTutorials();

@@ -1,0 +1,30 @@
+.dark-mode-toggle .toggle-label {
+  display: inline-block;
+  position: relative;
+  width: 4rem;
+  height: 2rem;
+  background-color: #d2d6dc;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.dark-mode-toggle .toggle-label:before {
+  content: "";
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.dark-mode-toggle input[type="checkbox"]:checked + .toggle-label:before {
+  transform: translateX(2rem);
+}
+
+.dark-mode-toggle .toggle-text {
+  display: inline;
+  margin-left: 0.5rem;
+}

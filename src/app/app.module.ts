@@ -13,6 +13,8 @@ import { TutorialListComponent } from './components/tutorial/tutorial-list/tutor
 import { TutorialComponent } from './pages/tutorial/tutorial.component';
 import { TutorialEditorComponent } from './components/tutorial/tutorial-editor/tutorial-editor.component';
 import { FormsModule } from '@angular/forms';
+import { DarkModeToggleComponent } from './core/components/dark-mode-toggle/dark-mode-toggle.component';
+import { TutorialAdminComponent } from './pages/tutorial-admin/tutorial-admin.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { FormsModule } from '@angular/forms';
     TutorialDetailComponent,
     TutorialListComponent,
     TutorialComponent,
-    TutorialEditorComponent
+    TutorialEditorComponent,
+    DarkModeToggleComponent,
+    TutorialAdminComponent
   ],
   imports: [
     BrowserModule,
