@@ -1,4 +1,4 @@
-<div class="my-5">
+<div class="my-5" >
   <div class="flex
   w-full
   max-w-sm
@@ -8,7 +8,7 @@
   rounded-lg
   shadow-md
   dark:bg-gray-800">
-    <div class="flex items-center justify-center w-12" [ngClass]="getToastColor(type || 'warning')">
+    <div class="flex items-center justify-center w-12" [ngClass]="getToastColor(type!)">
       <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40">
         <ng-container [ngSwitch]="type">
           <ng-container *ngSwitchCase="'success'">
@@ -29,7 +29,7 @@
 
     <div class="px-4 py-2 -mx-3">
       <div class="mx-3">
-        <span [ngClass]="getToastTextColor(type || 'warning')" class="font-semibold" >{{ type | titlecase }}</span>
+        <span [ngClass]="getToastTextColor(type!)" class="font-semibold" >{{ type | titlecase }}</span>
         <p class="text-sm text-gray-600 dark:text-gray-200">{{ message }}</p>
       </div>
     </div>
