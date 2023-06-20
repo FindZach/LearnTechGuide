@@ -78,6 +78,7 @@ export class TutorialService {
 
   updateTutorial(tutorial: Tutorial) {
     const existingTutorial = this.getTutorialById(tutorial.id);
+    console.log('[TutorialService] - existingTutorial: ', tutorial);
     if (existingTutorial) {
       existingTutorial.title = tutorial.title;
       existingTutorial.description = tutorial.description;

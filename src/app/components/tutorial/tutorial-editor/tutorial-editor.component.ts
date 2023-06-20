@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Tutorial } from 'src/app/models/tutorial/tutorial.model';
 import { TutorialService } from 'src/app/services/tutorial.service';
+
+declare const ClassicEditor: any;
 
 @Component({
   selector: 'app-tutorial-editor',
@@ -8,6 +10,7 @@ import { TutorialService } from 'src/app/services/tutorial.service';
   styleUrls: ['./tutorial-editor.component.scss']
 })
 export class TutorialEditorComponent implements OnInit {
+
   tutorials: Tutorial[] = [];
   newTutorial: Tutorial = {
     id: 0,
@@ -19,12 +22,18 @@ export class TutorialEditorComponent implements OnInit {
   };
   selectedTutorial: Tutorial | undefined;
 
-  ngOnInit() {
-
-  }
-
   constructor(private tutorialService: TutorialService) {
     this.tutorials = this.tutorialService.getTutorials();
+  }
+
+  ngOnInit() {
+  }
+
+
+  onEditorContentChange(content: string) {
+    if (this.selectedTutorial) {
+      this.selectedTutorial.content = content;
+    }
   }
 
   addTutorial() {
@@ -44,6 +53,11 @@ export class TutorialEditorComponent implements OnInit {
       this.tutorialService.updateTutorial(this.selectedTutorial);
       this.selectedTutorial = undefined;
     }
+  }
+
+  updateContent(content: string) {
+    // Update the content of the selected tutorial
+    this.selectedTutorial!.content = content;
   }
 
   selectTutorial(tutorial: Tutorial) {

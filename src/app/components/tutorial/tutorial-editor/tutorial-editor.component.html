@@ -1,30 +1,33 @@
-<!-- Add Tutorial -->
 <div class="mb-4">
   <h3 class="text-xl font-bold mb-2">Add Tutorial</h3>
   <form (ngSubmit)="addTutorial()">
     <div class="flex flex-col">
       <input type="text" class="border border-gray-300 p-2 rounded mb-2" [(ngModel)]="newTutorial.title" name="title" placeholder="Title">
-      <textarea class="border border-gray-300 p-2 rounded mb-2" [(ngModel)]="newTutorial.description" name="description" placeholder="Description"></textarea>
+      <input type="text" class="border border-gray-300 p-2 rounded mb-2" [(ngModel)]="newTutorial.description" name="description" placeholder="Description">
       <input type="text" class="border border-gray-300 p-2 rounded mb-2" [(ngModel)]="newTutorial.author" name="author" placeholder="Author">
-      <textarea class="border border-gray-300 p-2 rounded mb-2" [(ngModel)]="newTutorial.content" name="content" placeholder="Content"></textarea>
+
+
       <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add</button>
     </div>
   </form>
 </div>
 
-<!-- Edit Tutorial -->
 <div *ngIf="selectedTutorial" class="mb-4">
   <h3 class="text-xl font-bold mb-2">Edit Tutorial</h3>
   <form (ngSubmit)="updateTutorial()">
     <div class="flex flex-col">
       <input type="text" class="border border-gray-300 p-2 rounded mb-2" [(ngModel)]="selectedTutorial.title" name="title" placeholder="Title">
-      <textarea class="border border-gray-300 p-2 rounded mb-2" [(ngModel)]="selectedTutorial.description" name="description" placeholder="Description"></textarea>
+      <input type="text" class="border border-gray-300 p-2 rounded mb-2" [(ngModel)]="selectedTutorial.description" name="description" placeholder="Description">
       <input type="text" class="border border-gray-300 p-2 rounded mb-2" [(ngModel)]="selectedTutorial.author" name="author" placeholder="Author">
-      <textarea class="border border-gray-300 p-2 rounded mb-2" [(ngModel)]="selectedTutorial.content" name="content" placeholder="Content"></textarea>
+
+      <div id="editor">hi</div>
+
+
       <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Update</button>
     </div>
   </form>
 </div>
+
 
 
 <!-- Tutorial List -->
@@ -52,6 +55,3 @@
     </tbody>
   </table>
 </div>
-
-
-<textarea #myEditor></textarea>

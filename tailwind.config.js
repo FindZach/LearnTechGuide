@@ -4,11 +4,12 @@
     // ...other configuration options
     content: [
       './src/**/*.html',
+      "./node_modules/tw-elements/dist/js/**/*.js"
     ],
-
   theme: {
     extend: {},
   },
-  plugins: [],
+  darkMode: "class",
+  plugins: [require("tw-elements/dist/plugin.cjs"), require('@tailwindcss/typography')]
   }
 

@@ -1,5 +1,12 @@
 <div class="bg-gray-100">
   <div class="container mx-auto py-8">
+
+  <app-toast-message type="success" message="Your account was registered!"></app-toast-message>
+<app-toast-message type="info" message="This channel archived by the owner!"></app-toast-message>
+<app-toast-message type="warning" message="Your image size is too large!"></app-toast-message>
+<app-toast-message type="error" message="Your email is already used!"></app-toast-message>
+
+
     <h1 class="text-4xl font-bold mb-8">Most Recent Tutorials</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <div *ngFor="let tutorial of tutorials" class="p-6 bg-white rounded-lg shadow-md">

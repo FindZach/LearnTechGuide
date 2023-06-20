@@ -15,6 +15,10 @@ import { TutorialEditorComponent } from './components/tutorial/tutorial-editor/t
 import { FormsModule } from '@angular/forms';
 import { DarkModeToggleComponent } from './core/components/dark-mode-toggle/dark-mode-toggle.component';
 import { TutorialAdminComponent } from './pages/tutorial-admin/tutorial-admin.component';
+import { TinyMCEEditorComponent } from './shared/components/tiny-mceeditor/tiny-mceeditor.component';
+import { ToastMessageComponent } from './shared/components/toast-message/toast-message.component';
+import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -29,12 +33,15 @@ import { TutorialAdminComponent } from './pages/tutorial-admin/tutorial-admin.co
     TutorialComponent,
     TutorialEditorComponent,
     DarkModeToggleComponent,
-    TutorialAdminComponent
+    TutorialAdminComponent,
+    TinyMCEEditorComponent,
+    ToastMessageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
