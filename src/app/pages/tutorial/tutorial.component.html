@@ -1,8 +1,8 @@
-<div class="flex h-fit">
-  <div class="flex-shrink-0 w-1/4 bg-gray-100 dark:bg-gray-700 p-4">
-    <p class="text-2xl font-bold">LearnTechGuide Tutorials</p>
+<div class="flex h-fit" [ngClass]="getThemeService().getBackgroundColor()">
+  <div class="flex-shrink-0 w-1/4">
+    <p class="text-2xl font-bold" [ngClass]="getThemeService().getTextColor()">LearnTechGuide Tutorials</p>
   </div>
-  <div class="flex-1 bg-gray-100 dark:bg-gray-700 p-4">
+  <div class="flex-1 p-4">
     <app-tutorial-list></app-tutorial-list>
   </div>
 </div>

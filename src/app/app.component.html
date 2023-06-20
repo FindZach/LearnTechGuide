@@ -1,4 +1,4 @@
-<div class="bg-gray-100 dark:bg-gray-700">
+<div [ngClass]="getThemeService().getBackgroundColor()">
   <app-navbar></app-navbar>
   <router-outlet></router-outlet>
 </div>
