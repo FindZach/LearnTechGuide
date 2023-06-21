@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, AfterViewInit, ChangeDetectorRef } from '@angular/core';
-import { ColorScheme } from 'src/app/models/theme/colorscheme.model';
+import { ColorScheme, Theme } from 'src/app/models/theme/colorscheme.model';
 import { ThemeService } from 'src/app/services/theme/theme.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { ThemeService } from 'src/app/services/theme/theme.service';
 })
 export class NavbarComponent implements OnInit, OnDestroy, AfterViewInit {
   colorScheme?: ColorScheme;
-
+  isDropdownOpen = false;
 
   constructor(protected themeService: ThemeService, private ref: ChangeDetectorRef) {
     this.colorScheme = themeService.getColorScheme();
@@ -22,11 +22,19 @@ export class NavbarComponent implements OnInit, OnDestroy, AfterViewInit {
     });
   }
 
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  selectTheme(theme: Theme) {
+    this.themeService.setTheme(theme);
+    this.isDropdownOpen = false;
+  }
 
   getColorClassName(className: string | undefined, prefix: string): string {
-    console.log('hello; '+this.themeService.getColorClassName(className, prefix));
+    console.log('hello; '+this.themeService.transformColor(className, prefix));
     if (className === undefined) return '';
-    return this.themeService.getColorClassName(className, prefix);
+    return this.themeService.transformColor(className, prefix);
   }
 
   ngOnInit(): void {

@@ -8,12 +8,9 @@ import { ThemeService } from 'src/app/services/theme/theme.service';
 })
 export class TutorialComponent implements OnInit {
 
-  constructor(private themeService: ThemeService) {
+  constructor(protected themeService: ThemeService) {
   }
 
-  public getThemeService(): ThemeService {
-    return this.themeService;
-  }
 
   ngOnInit(): void {
   }

@@ -4,8 +4,6 @@ import { Tutorial } from 'src/app/models/tutorial/tutorial.model';
 import { ThemeService } from 'src/app/services/theme/theme.service';
 import { TutorialService } from 'src/app/services/tutorial.service';
 
-declare const ClassicEditor: any;
-
 @Component({
   selector: 'app-tutorial-editor',
   templateUrl: './tutorial-editor.component.html',

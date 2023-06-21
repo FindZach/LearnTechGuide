@@ -12,11 +12,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     initTE({ Carousel, Dropdown, Collapse, Ripple });
   }
 
-  constructor(private themeService: ThemeService) {
-  }
-
-  public getThemeService(): ThemeService {
-    return this.themeService;
+  constructor(protected themeService: ThemeService) {
   }
 
   ngAfterViewInit(): void {

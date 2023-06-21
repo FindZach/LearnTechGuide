@@ -1,11 +1,14 @@
 <div class="container mx-auto h-screen">
-  <h1 class="text-2xl font-bold mt-8 text-center" [ngClass]="themeService.getTextColor()">{{ tutorial?.title }}</h1>
-  <p [ngClass]="themeService.getTextColor()">{{ tutorial?.description }}</p>
-  <p [ngClass]="themeService.getTextColor()">Author: {{ tutorial?.author }}</p>
+  <h1 class="text-2xl font-bold mt-8 text-center" [ngClass]="themeService.getColorScheme().textPrimary">Title: {{ tutorial?.title }}</h1>
+  <p [ngClass]="themeService.getColorScheme().textPrimary">Description: {{ tutorial?.description }}</p>
+  <p [ngClass]="themeService.getColorScheme().textPrimary">Author: {{ tutorial?.author }}</p>
   <hr class="my-8">
 
   <div class="prose">
-    <div [ngClass]="themeService.getTextColor()" [innerHTML]="tutorial?.content"></div>
+    <div [ngClass]="themeService.getColorScheme().textPrimary" [innerHTML]="tutorial?.content"></div>
   </div>
   <!-- Add the content of the tutorial here -->
+
+  <button [routerLink]="'/tutorial'" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2">Return</button>
+
 </div>

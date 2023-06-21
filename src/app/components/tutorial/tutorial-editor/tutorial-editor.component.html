@@ -1,5 +1,8 @@
+
+
+<div class="flex justify-around mt-20" [ngClass]="themeService.getColorScheme().bgPrimary">
 <div class="mb-4">
-  <h3 class="text-xl font-bold mb-2">Add Tutorial</h3>
+  <h3 class="text-xl font-bold mb-2 text-center" [ngClass]="colorScheme?.textPrimary">Add Tutorial</h3>
   <form (ngSubmit)="addTutorial()">
     <div class="flex flex-col">
       <input type="text" class="border border-gray-300 p-2 rounded mb-2" [(ngModel)]="newTutorial.title" name="title" placeholder="Title">
@@ -12,8 +15,8 @@
   </form>
 </div>
 
-<div *ngIf="selectedTutorial" class="mb-4">
-  <h3 class="text-xl font-bold mb-2">Edit Tutorial</h3>
+<div *ngIf="selectedTutorial" class="mb-4" >
+  <h3 class="text-xl font-bold mb-2" [ngClass]="colorScheme?.textPrimary">Edit Tutorial</h3>
   <form (ngSubmit)="updateTutorial()">
     <div class="flex flex-col">
       <input type="text" class="border border-gray-300 p-2 rounded mb-2" [(ngModel)]="selectedTutorial.title" name="title" placeholder="Title">
@@ -31,9 +34,7 @@
 
 
 <!-- Tutorial List -->
-<div [ngClass]="themeService.getBackgroundColor()">
-  <h3 class="text-xl font-bold mb-2">Tutorial List</h3>
-  <table class="border-collapse border border-gray-300" [ngClass]="themeService.getTextColor()">
+  <table class="border-collapse border border-gray-300" [ngClass]="themeService.getColorScheme().textPrimary">
     <thead>
       <tr>
         <th class="border border-gray-300 p-2">Title</th>
@@ -55,3 +56,4 @@
     </tbody>
   </table>
 </div>
+
