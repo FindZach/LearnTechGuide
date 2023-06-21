@@ -6,7 +6,7 @@ import { ColorScheme, Theme, ThemeColorSchemes } from 'src/app/models/theme/colo
   providedIn: 'root',
 })
 export class ThemeService {
-  private currentTheme: Theme = Theme.Light;
+  private currentTheme: Theme = Theme.Dark;
   private colorScheme: ColorScheme = ThemeColorSchemes[this.currentTheme];
   private colorSchemeSubject: Subject<ColorScheme> = new Subject<ColorScheme>();
 
