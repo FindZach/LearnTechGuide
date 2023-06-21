@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
+import { ColorScheme } from 'src/app/models/theme/colorscheme.model';
 import { Tutorial } from 'src/app/models/tutorial/tutorial.model';
 import { ThemeService } from 'src/app/services/theme/theme.service';
 import { TutorialService } from 'src/app/services/tutorial.service';
@@ -8,18 +9,29 @@ import { TutorialService } from 'src/app/services/tutorial.service';
   templateUrl: './tutorial-list.component.html',
   styleUrls: ['./tutorial-list.component.scss']
 })
-export class TutorialListComponent implements OnInit {
+export class TutorialListComponent implements OnInit, OnDestroy, AfterViewInit {
+
   tutorials: Tutorial[] = [];
 
-  ngOnInit(): void {
-    this.themeService.getAccentColor();
+  protected colorScheme?: ColorScheme;
+
+  constructor(private tutorialService: TutorialService, protected themeService: ThemeService, private ref: ChangeDetectorRef) {
+    this.colorScheme = this.themeService.getColorScheme();
   }
 
-  constructor(private tutorialService: TutorialService, private themeService: ThemeService) {
+  ngAfterViewInit(): void {
+    this.themeService?.getColorSchemeObservable().subscribe((colorScheme: ColorScheme) => {
+      console.log('Color scheme changed to ' + JSON.stringify(colorScheme));
+      this.colorScheme = colorScheme;
+      this.ref.detectChanges();
+    });
+  }
+
+  ngOnInit(): void {
     this.tutorials = this.tutorialService.getTutorials();
   }
 
-  public getThemeService(): ThemeService {
-    return this.themeService;
+  ngOnDestroy(): void {
+
   }
 }

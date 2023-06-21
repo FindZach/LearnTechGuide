@@ -1,11 +1,11 @@
 <div class="container mx-auto h-screen">
-  <h1 class="text-2xl font-bold mt-8 dark:text-gray-200 text-center">{{ tutorial?.title }}</h1>
-  <p class="text-gray-500 mt-4 dark:text-gray-300">{{ tutorial?.description }}</p>
-  <p class="text-gray-500 mt-4 dark:text-gray-300">Author: {{ tutorial?.author }}</p>
+  <h1 class="text-2xl font-bold mt-8 text-center" [ngClass]="themeService.getTextColor()">{{ tutorial?.title }}</h1>
+  <p [ngClass]="themeService.getTextColor()">{{ tutorial?.description }}</p>
+  <p [ngClass]="themeService.getTextColor()">Author: {{ tutorial?.author }}</p>
   <hr class="my-8">
 
   <div class="prose">
-    <div [innerHTML]="tutorial?.content"></div>
+    <div [ngClass]="themeService.getTextColor()" [innerHTML]="tutorial?.content"></div>
   </div>
   <!-- Add the content of the tutorial here -->
 </div>

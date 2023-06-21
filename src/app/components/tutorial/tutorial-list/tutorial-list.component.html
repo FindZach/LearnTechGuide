@@ -1,13 +1,14 @@
-<div [ngClass]="getThemeService().getBackgroundColor()">
-    <h1 class="text-4xl font-bold mb-8"  [ngClass]="getThemeService().getTextColor()">Most Recent Tutorials</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div *ngFor="let tutorial of tutorials" class="p-6 rounded-lg shadow-md" [ngClass]="getThemeService().getSecondaryBackgroundColor()">
-        <h2 class="text-2xl font-bold mb-4" [ngClass]="getThemeService().getTextColor()">{{ tutorial.title }}</h2>
-        <p class="" [ngClass]="getThemeService().getTextColor()">{{ tutorial.description }}</p>
-        <div class="flex justify-between mt-6">
-          <button [routerLink]="['/tutorial', tutorial.slug]"  class="px-4 py-2 bg-blue-500 text-white rounded-lg focus:outline-none">Read More</button>
-        </div>
-      </div>
+<div>
+  <h1 class="text-4xl font-bold mb-8" [ngClass]="colorScheme?.text">Most Recent Tutorials</h1>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div *ngFor="let tutorial of tutorials" class="p-6 rounded-lg shadow-md" [ngClass]="colorScheme?.text">
+      <h2 class="text-2xl font-bold mb-4" [ngClass]="colorScheme?.text">{{ tutorial.title }}</h2>
+      <p class="font-semibold" [ngClass]="colorScheme?.text">{{ tutorial.description }}</p>
+      <button class="flex justify-between mt-6 rounded-md" [ngClass]="' bg-' + colorScheme?.secondary">
+        <a [routerLink]="['/tutorial', tutorial.slug]"
+        [ngClass]="'bg-' + (colorScheme?.secondary?.replace('bg-', ''))"
+          class="px-5 py-2 rounded-lg focus:outline-none">Read More</a>
+      </button>
     </div>
-
+  </div>
 </div>

@@ -1,16 +1,60 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { ColorScheme, Theme, ThemeColorSchemes } from 'src/app/models/theme/colorscheme.model';
+
+export enum ColorType {
+  BG = 'bg-',
+  TEXT = 'text-',
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class ThemeService {
 
-  private currentTheme: Theme = Theme.Dark;
+  private currentTheme: Theme = Theme.Light;
+  private colorScheme: ColorScheme = ThemeColorSchemes[this.currentTheme];
+
+  private colorSchemeSubject: Subject<ColorScheme> = new Subject<ColorScheme>();
+
+  private colorPrefixes = ['bg-', 'text-'];
 
   constructor() {}
 
   setTheme(theme: Theme) {
+    console.log('Setting theme ' + JSON.stringify(theme));
     this.currentTheme = theme;
+    this.colorScheme = ThemeColorSchemes[this.currentTheme];
+
+    this.colorSchemeSubject.next(this.colorScheme);
+  }
+
+  toggleTheme() {
+    console.log('Toggled theme');
+    if (this.currentTheme === Theme.Dark) {
+      this.setTheme(Theme.Light);
+    } else {
+      this.setTheme(Theme.Dark);
+    }
+  }
+
+  getColorClassName(className: string | undefined, prefix: string): string {
+    console.log('Received className:', className);
+
+    if (!className) {
+      console.log('Returning empty string due to undefined className.');
+      return '';
+    }
+
+    const modifiedClassName = className.startsWith(prefix) ? className : prefix + className;
+    console.log('Modified className:', modifiedClassName);
+
+    return modifiedClassName;
+  }
+
+  getColorSchemeObservable(): Observable<ColorScheme> {
+    console.log('observing..');
+    return this.colorSchemeSubject.asObservable();
   }
 
   getTheme(): Theme {
@@ -18,34 +62,32 @@ export class ThemeService {
   }
 
   getColorScheme(): ColorScheme {
-    return ThemeColorSchemes[this.currentTheme];
+    return this.colorScheme;
   }
 
-  public getErrorColorBackground() : string {
+  public getError(): string {
     return 'bg-red-500';
   }
-  public getErrorColorText() : string {
+
+  public getErrorColorText(): string {
     return 'text-red-500';
   }
 
-  public getPrimaryColor(): string {
-    return this.getColorScheme().primary;
+  public getPrimary(): string {
+    return this.colorScheme.primary;
   }
 
-  public getAccentColor(): string {
+  public getAccent(): string {
     return this.getColorScheme().accent;
   }
 
-  public getSecondaryColor(): string {
+  public getSecondary(): string {
+    console.log('SECONDARY COLOR: ' + this.getColorScheme().secondary);
     return this.getColorScheme().secondary;
   }
 
   public getBackgroundColor(): string {
     return this.getColorScheme().background;
-  }
-
-  public getSecondaryBackgroundColor(): string {
-    return this.getColorScheme().secondaryBackground;
   }
 
   public getTextColor(): string {
