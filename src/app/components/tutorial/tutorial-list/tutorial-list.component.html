@@ -1,7 +1,7 @@
 <div>
-  <h1 class="text-4xl font-bold mb-8" [ngClass]="colorScheme?.textPrimary">Most Recent Tutorials</h1>
+  <h1 class="text-4xl font-bold mb-8" [ngClass]="colorScheme?.textPrimary">Latest Guides</h1>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    <div *ngFor="let tutorial of tutorials" class="p-6 rounded-lg shadow-md" [ngClass]="colorScheme?.bgSecondary">
+    <div *ngFor="let tutorial of tutorials" class="p-6 rounded-lg shadow-md" [ngClass]="colorScheme?.bgAccent">
       <h2 class="text-2xl font-bold mb-4" [ngClass]="colorScheme?.textPrimary">{{ tutorial.title }}</h2>
       <p class="font-semibold" [ngClass]="colorScheme?.textNeutral">{{ tutorial.description }}</p>
       <button class="flex justify-between mt-6 rounded-md" [ngClass]="colorScheme?.bgNeutral">
